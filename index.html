@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>JayPT — Ask Jay Anything</title>
+  <style>
+    body {
+      background: #0f1220;
+      color: #f7f8ff;
+      font-family: system-ui, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .container {
+      max-width: 600px;
+      background: #161a2b;
+      padding: 24px;
+      border-radius: 16px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+      text-align: center;
+    }
+    input {
+      width: 80%;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      background: #0b0e1a;
+      color: white;
+      margin-top: 16px;
+      font-size: 16px;
+    }
+    button {
+      margin-top: 16px;
+      padding: 12px 20px;
+      background: #5a67ff;
+      border: none;
+      color: white;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    button:hover { background: #7c8aff; }
+    .answer {
+      margin-top: 20px;
+      font-size: 18px;
+      min-height: 60px;
+      transition: opacity 0.3s ease;
+      opacity: 0;
+    }
+    .visible { opacity: 1; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>JayPT</h1>
+    <p>Ask Jay Anything</p>
+    <form id="jayForm">
+      <input id="question" type="text" placeholder="What’s on your mind?" />
+      <br />
+      <button type="submit">Ask</button>
+    </form>
+    <div class="answer" id="answer"></div>
+  </div>
+
+  <script>
+    const sayings = [
+      "You knew the assignment. Do the reps.",
+      "The market didn’t block you. Your calendar did.",
+      "You don’t need motivation. You need a start time.",
+      "Meetings don’t build empires. Work blocks do.",
+      "You can’t outsource your push‑ups.",
+      "The plan is fine. The execution is late.",
+      "Your future self is watching. Don’t make it cringe.",
+      "Less podcast. More progress.",
+      "Stop tinkering. Start tallying reps.",
+      "You had time. You picked comfort.",
+      "Act like the person who already did it.",
+      "Hard choices. Easy life.",
+      "Your excuses are loud. Make your results louder.",
+      "Stand up. Start now.",
+      "Make the next 30 minutes count."
+    ];
+
+    const form = document.getElementById('jayForm');
+    const answerBox = document.getElementById('answer');
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const randomAnswer = sayings[Math.floor(Math.random() * sayings.length)] + ' — Jay Reid';
+      answerBox.textContent = randomAnswer;
+      answerBox.classList.remove('visible');
+      setTimeout(() => answerBox.classList.add('visible'), 50);
+    });
+  </script>
+</body>
+</html>
